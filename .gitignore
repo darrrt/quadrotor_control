@@ -52,3 +52,7 @@ src/rotors_simulator
 src/catkin_simple
 src/eigen_catkin
 src/mav_comm
+.catkin_tools
+devel
+build 
+logs
