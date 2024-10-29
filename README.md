@@ -6,6 +6,87 @@ The RPG Quadrotor Control repository provides packages that are intended to be u
 This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.
 
 The source code is released under a MIT license.
+### Installation
+
+* [[Installation Guide|Installation-Guide]]
+### Get git
+For the following installation instructions you will need git which you can set up with the following commands:
+```bash
+# in file folder
+git config user.name "Your Name Here"
+git config user.email "Same e-mail as used for github"
+```
+
+### soruce ROS
+
+```bash
+ . /opt/ros/noetic/setup.bash
+```
+
+
+### create conda env and Get catkin tools
+Get catkin tools with the following commands:
+```bash
+conda create -n YOURNAME python=3.10
+# and make sure you activate conda env when each time you use this project
+conda activate YOURNAME # activate conda env 
+# python >3.10 will conflict with ros-noetic
+pip install catkin-tools
+```
+
+### Create a catkin workspace
+Create a catkin workspace with the following commands by replacing `<ROS VERSION>` with the actual version of ROS you installed:
+```bash
+#将所有ros相关源文件放在 src下
+catkin build
+```
+
+### Set up SSH keys
+We strongly recommend to set up ssh keys with github to simplify your workflow. You can do so by following the instructions on [how to set up an ssh key](https://help.github.com/articles/generating-an-ssh-key/). Henceforth, always clone repositories using the ssh url:
+
+[[https://github.com/uzh-rpg/rpg_quadrotor_control/wiki/images/ssh_link.png|alt=ssh_link]]
+
+### Install Dependencies
+
+##### Gazebo
+ros have done that
+
+##### ROS Dependencies
+Install system and ROS dependencies:
+```bash
+sudo apt-get install libgoogle-glog-dev protobuf-compiler ros-$ROS_DISTRO-octomap-msgs ros-$ROS_DISTRO-octomap-ros ros-$ROS_DISTRO-joy
+```
+
+### Main Installation
+Install [vcstool](https://github.com/dirk-thomas/vcstool):
+```bash
+pip install vcstool
+```
+
+Clone dependencies:
+```bash
+vcs-import < rpg_quadrotor_control/dependencies.yaml
+```
+Make sure the GUIs in your rqt cache are updated (Don't worry if this outputs an error because the file could not be found, we just want to remove it if it is already there):
+```bash
+rm ~/.config/ros.org/rqt_gui.ini
+```
+Build:
+```bash
+catkin build
+```
+Add sourcing of your catkin workspace to your `.bashrc` file:
+```bash
+source ~/.bashrc
+```
+If you are using the [sbus_bridge](https://github.com/uzh-rpg/rpg_quadrotor_control/tree/master/bridges/sbus_bridge), add your user to the dialout group:
+```bash
+sudo usermod -aG dialout $USER
+```
+If you are using GPIO or ADC functionalities from the [rpg_single_board_io](https://github.com/uzh-rpg/rpg_single_board_io) repository, follow the set up instructions in its [readme](https://github.com/uzh-rpg/rpg_single_board_io/blob/master/README.md).
+
+### Test the Framework
+To test you installation, follow the [[Test the Framework|Test-the-Framework]] instructions.
 
 ## Instructions
 
