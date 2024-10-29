@@ -45,3 +45,10 @@ matlab_gen
 # CLion 
 .idea/
 cmake-build-debug/
+
+src/rpg_single_board_io
+src/rpg_quadrotor_common
+src/rotors_simulator
+src/catkin_simple
+src/eigen_catkin
+src/mav_comm
