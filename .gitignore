@@ -56,3 +56,5 @@ src/mav_comm
 devel
 build 
 logs
+
+src/dependencies
